@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Chart colors were validated for color-blind separation and
+ * contrast (dataviz six-checks): rings all-pairs CVD ΔE ≥ 9.6, sleep stages are
+ * an ordinal depth ramp (REM → Core → Deep) plus a warm "Awake".
+ */
+:root {
+  color-scheme: light;
+  --page: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #f2f2f5;
+  --hover: rgba(0, 0, 0, 0.045);
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --text-3: #7a7a80;
+  --grid: #ececf0;
+  --axis: #d2d2d7;
+  --good: #1a7f37;
+  --bad: #c9372c;
+  --link: #0a66d6;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.03);
+
+  --c-move: #d0013f;
+  --c-exercise: #62a204;
+  --c-stand: #04979b;
+  --c-awake: #ee6b47;
+  --c-rem: #56b2fd;
+  --c-core: #396eed;
+  --c-deep: #4b2eb6;
+  --c-unspec: #728295;
+  --c-activity: #bd6706;
+  --c-heart: #e22767;
+  --c-resp: #0689c8;
+  --c-body: #9e5cd1;
+  --c-hearing: #bd8703;
+  --c-mindful: #0b9488;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0a0a0b;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --hover: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.09);
+    --text: #f5f5f7;
+    --text-2: #a1a1a6;
+    --text-3: #8e8e93;
+    --grid: #2c2c2e;
+    --axis: #3a3a3c;
+    --good: #30d158;
+    --bad: #ff6961;
+    --link: #4c9bff;
+    --shadow: none;
+
+    --c-move: #db0142;
+    --c-exercise: #67a902;
+    --c-stand: #0da1a5;
+    --c-awake: #e5633f;
+    --c-rem: #83c5fe;
+    --c-core: #5285f8;
+    --c-deep: #573fc7;
+    --c-unspec: #8494a8;
+    --c-activity: #ca6e03;
+    --c-heart: #ed356f;
+    --c-resp: #0292d7;
+    --c-body: #a765db;
+    --c-hearing: #bd8703;
+    --c-mindful: #079e92;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0a0a0b;
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.09);
+  --text: #f5f5f7;
+  --text-2: #a1a1a6;
+  --text-3: #8e8e93;
+  --grid: #2c2c2e;
+  --axis: #3a3a3c;
+  --good: #30d158;
+  --bad: #ff6961;
+  --link: #4c9bff;
+  --shadow: none;
+
+  --c-move: #db0142;
+  --c-exercise: #67a902;
+  --c-stand: #0da1a5;
+  --c-awake: #e5633f;
+  --c-rem: #83c5fe;
+  --c-core: #5285f8;
+  --c-deep: #573fc7;
+  --c-unspec: #8494a8;
+  --c-activity: #ca6e03;
+  --c-heart: #ed356f;
+  --c-resp: #0292d7;
+  --c-body: #a765db;
+  --c-hearing: #bd8703;
+  --c-mindful: #079e92;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-hover: var(--hover);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-ink-3: var(--text-3);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --color-link: var(--link);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  background: var(--page);
+}
+
+body {
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recharts: keep focus rings subtle and remove the default outline on the SVG surface. */
+.recharts-wrapper svg:focus,
+.recharts-surface:focus {
+  outline: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
